@@ -1,32 +1,50 @@
-import { SuccessContainer } from './styles'
+import { Adress, DetailsOrder, SuccessContainer, TypePayment } from './styles'
+import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+
+import Image from '../../assets/Illustration.svg'
+import { Clock, Item } from '../Home/components/StoreDetails/styles'
 
 export function Success() {
   return (
     <SuccessContainer>
-      <div>
+      <DetailsOrder>
         <header>
           <h2>Uhu! Pedido confirmado</h2>
           <p>Agora é só aguardar que logo o café chegará até você</p>
         </header>
         <main>
-          <div>
-            <img src="" alt="" />
-            <span>Entrega em Rua João Daniel Martinelli, 102</span>
-            <span>Farrapos- Porto Alegre, RS</span>
-          </div>
-          <div>
-            <img src="" alt="" />
-            <span>Previsão de entrega</span>
-            <span>20min - 30min</span>
-          </div>
-          <div>
-            <img src="" alt="" />
-            <span>Pagamento na entrega</span>
-            <span>Cartão de Crédito</span>
-          </div>
+          <Item>
+            <Adress>
+              <MapPin weight="fill" />
+            </Adress>
+            <div>
+              <span>
+                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+              </span>
+              <span>Farrapos- Porto Alegre, RS</span>
+            </div>
+          </Item>
+          <Item>
+            <Clock>
+              <Timer weight="fill" />
+            </Clock>
+            <div>
+              <span>Previsão de entrega</span>
+              <strong>20min - 30min</strong>
+            </div>
+          </Item>
+          <Item>
+            <TypePayment>
+              <CurrencyDollar weight="fill" />
+            </TypePayment>
+            <div>
+              <span>Pagamento na entrega</span>
+              <strong>Cartão de Crédito</strong>
+            </div>
+          </Item>
         </main>
-      </div>
-      <img src="" alt="" />
+      </DetailsOrder>
+      <img src={Image} alt="" />
     </SuccessContainer>
   )
 }
