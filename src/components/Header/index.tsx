@@ -1,10 +1,12 @@
 import Logo from '../../assets/Logo.svg'
-import { HeaderContainer, Location } from './styles'
-import { MapPin } from 'phosphor-react'
+import { useCart } from '../../hooks/useCart'
+import { CartButtonContainer, HeaderContainer, Location } from './styles'
+import { MapPin, ShoppingCart } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
-import { CartButton } from '../CartButton'
 
 export function Header() {
+  const { amountItems } = useCart()
+
   return (
     <HeaderContainer>
       <NavLink to="/" title="Home">
@@ -17,7 +19,10 @@ export function Header() {
           Porto Alegre, RS
         </Location>
         <NavLink to="/checkout" title="Checkout">
-          <CartButton background="yellow-light" color="yellow-dark" />
+          <CartButtonContainer>
+            {amountItems >= 1 && <span>{amountItems}</span>}
+            <ShoppingCart size={24} weight="fill" />
+          </CartButtonContainer>
         </NavLink>
       </div>
     </HeaderContainer>
