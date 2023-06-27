@@ -4,6 +4,7 @@ import { Coffee } from '../Coffee'
 import { CoffeeListContainer, List, Title } from './styles'
 
 export interface ICoffee {
+  id: number
   name: string
   tag: string[]
   description: string
@@ -28,14 +29,7 @@ export function CoffeeList() {
       <Title>Nossos cafés</Title>
       <List>
         {coffees.map((coffee) => (
-          <Coffee
-            key={coffee.name}
-            name={coffee.name}
-            tag={coffee.tag}
-            description={coffee.description}
-            price={coffee.price}
-            img={coffee.img}
-          />
+          <Coffee key={coffee.id} coffee={coffee} />
         ))}
       </List>
     </CoffeeListContainer>
