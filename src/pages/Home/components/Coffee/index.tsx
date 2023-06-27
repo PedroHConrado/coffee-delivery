@@ -1,49 +1,78 @@
-import { Minus, Plus } from 'phosphor-react'
-import { CartButton } from '../../../../components/CartButton'
+import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { ICoffee } from '../CoffeeList'
 import {
   Amount,
+  CartButtonContainer,
   CoffeeContainer,
   CoffeeInformation,
   Price,
   Tag,
 } from './styles'
+import { useCart } from '../../../../hooks/useCart'
+import { useState } from 'react'
 
-export function Coffee({ description, name, price, tag, img }: ICoffee) {
+interface CoffeeProps {
+  coffee: ICoffee
+}
+
+export function Coffee({ coffee }: CoffeeProps) {
+  const { addCoffeeToCart } = useCart()
+  const [amount, setAmount] = useState(1)
+
+  function handleIncrement() {
+    setAmount((state) => state + 1)
+  }
+  function handleDecrement() {
+    setAmount((state) => state - 1)
+  }
+
+  function handleAddToCart() {
+    const coffeeToAdd = {
+      ...coffee,
+      amount,
+    }
+
+    addCoffeeToCart(coffeeToAdd)
+  }
+
   return (
     <CoffeeContainer>
       <CoffeeInformation>
-        <img src={img} alt="" />
+        <img src={coffee.img} alt="" />
         <header>
-          {tag.length > 1 ? (
-            tag.map((tag) => <Tag key={tag}>{tag}</Tag>)
+          {coffee.tag.length > 1 ? (
+            coffee.tag.map((tag) => <Tag key={tag}>{tag}</Tag>)
           ) : (
-            <Tag>{tag[0]}</Tag>
+            <Tag>{coffee.tag[0]}</Tag>
           )}
         </header>
 
         <main>
-          <p>{name}</p>
-          <small>{description}</small>
+          <p>{coffee.name}</p>
+          <small>{coffee.description}</small>
         </main>
         <footer>
           <Price>
             R${' '}
             <strong>
-              {price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+              {coffee.price.toLocaleString('pt-br', {
+                minimumFractionDigits: 2,
+              })}
             </strong>
           </Price>
           <div>
             <Amount>
-              <button>
+              <button disabled={amount <= 1} onClick={handleDecrement}>
                 <Minus />
               </button>
-              <span>1</span>
-              <button>
+              <span>{amount}</span>
+              <button onClick={handleIncrement}>
                 <Plus />
               </button>
             </Amount>
-            <CartButton background="purple-dark" color="base-card" />
+            <CartButtonContainer onClick={handleAddToCart}>
+              <ShoppingCart size={24} weight="fill" />
+            </CartButtonContainer>
           </div>
         </footer>
       </CoffeeInformation>

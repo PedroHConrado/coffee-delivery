@@ -113,3 +113,15 @@ export const Tag = styled.div`
   font-weight: 700;
   line-height: 13px;
 `
+export const CartButtonContainer = styled.button`
+  width: 2.375rem;
+  height: 2.375rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+
+  background: ${(props) => props.theme['purple-dark']};
+  color: ${(props) => props.theme.white};
+
+  cursor: pointer;
+`
