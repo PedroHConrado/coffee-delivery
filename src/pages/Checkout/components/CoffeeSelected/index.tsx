@@ -38,9 +38,7 @@ export function CoffeeSelected() {
             <span>R$ {formatMoney(totalCoffee)}</span>
           </TotalAmount>
         </AmountTotal>
-        <NavLink to="/success" title="Success">
-          CONFIMAR PEDIDO
-        </NavLink>
+        <button type="submit">CONFIMAR PEDIDO</button>
       </OrderSumary>
     </OrderInformation>
   )

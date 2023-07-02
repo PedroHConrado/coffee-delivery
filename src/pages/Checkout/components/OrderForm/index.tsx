@@ -13,10 +13,7 @@ import {
 import { useFormContext } from 'react-hook-form'
 
 export function OrderForm() {
-  const { register, handleSubmit } = useFormContext()
-  function handleGetOrderInformation(data: any) {
-    console.log(data)
-  }
+  const { register } = useFormContext()
 
   return (
     <ClientInformation>

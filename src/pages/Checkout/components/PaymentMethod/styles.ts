@@ -32,12 +32,25 @@ export const PaymentInfo = styled.div`
 `
 
 export const PaymentCard = styled.div`
+  input {
+    visibility: hidden;
+    appearance: none;
+  }
+
+  input:checked + label div {
+    border-color: ${(props) => props.theme['purple-medium']};
+    background: ${(props) => props.theme['purple-light']};
+  }
+`
+export const ContentContainer = styled.div`
   background: ${(props) => props.theme['base-button']};
-  color: ${(props) => props.theme['purple-medium']};
-  padding: 16px;
+  color: ${(props) => props.theme['base-text']};
+  padding: 1rem;
+  border: 1px solid ${(props) => props.theme['base-button']};
   border-radius: 6px;
   width: 11.17rem;
   margin-top: 2rem;
+  font-size: 12px;
 
   display: flex;
   justify-content: center;
@@ -46,24 +59,7 @@ export const PaymentCard = styled.div`
 
   cursor: pointer;
 
-  &:hover {
-    background: ${(props) => props.theme['purple-light']};
-  }
-
-  input {
-    visibility: hidden;
-    appearance: none;
-  }
-
-  input:checked div {
-    background: red;
-  }
-
-  label {
-    font-size: 12px;
-    color: ${(props) => props.theme['base-text']};
-    line-height: 19.2px;
+  svg {
+    color: ${(props) => props.theme['purple-medium']};
   }
 `
-
-export const ContentContainer = styled.div``

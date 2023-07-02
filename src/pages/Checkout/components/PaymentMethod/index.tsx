@@ -1,11 +1,9 @@
 import { CreditCard, Bank, Money, CurrencyDollar } from 'phosphor-react'
-import { PaymentCard, PaymentInfo } from './styles'
+import { ContentContainer, PaymentCard, PaymentInfo } from './styles'
 import { useFormContext } from 'react-hook-form'
-import { useState } from 'react'
 
 export function PaymentMethod() {
   const { register } = useFormContext()
-  const [paymentMethod, setpaymentMethod] = useState('credit_card')
 
   return (
     <PaymentInfo>
@@ -21,36 +19,34 @@ export function PaymentMethod() {
       <main>
         <PaymentCard>
           <input
+            id="credit_card"
             value="credit_card"
             type="radio"
-            checked={paymentMethod === 'credit_card'}
-            onChange={() => setpaymentMethod('credit_card')}
+            {...register('paymentMethod')}
           />
-          <CreditCard />
-          <label htmlFor="credit_card">CARTÃO DE CRÉDITO</label>
+          <label htmlFor="credit_card">
+            <ContentContainer>
+              <CreditCard size={16} />
+              CARTÃO DE CREDITO
+            </ContentContainer>
+          </label>
         </PaymentCard>
-
         <PaymentCard>
-          <input
-            value="debit_card"
-            type="radio"
-            checked={paymentMethod === 'debit_card'}
-            onChange={() => setpaymentMethod('debit_card')}
-          />
-          <Bank />
-          <label htmlFor="debit_card">CARTÃO DE DÉBITO</label>
+          <input id="debit_card" type="radio" {...register('paymentMethod')} />
+          <label htmlFor="debit_card">
+            <ContentContainer>
+              <Bank size={16} />
+              CARTÃO DE DÉBITO
+            </ContentContainer>
+          </label>
         </PaymentCard>
-
         <PaymentCard>
-          <Money />
+          <input id="money" type="radio" {...register('paymentMethod')} />
           <label htmlFor="money">
-            <input
-              value="money"
-              type="radio"
-              checked={paymentMethod === 'money'}
-              onChange={() => setpaymentMethod('money')}
-            />
-            DINHEIRO
+            <ContentContainer>
+              <Money size={16} />
+              DINHEIRO
+            </ContentContainer>
           </label>
         </PaymentCard>
       </main>
