@@ -32,7 +32,12 @@ export function PaymentMethod() {
           </label>
         </PaymentCard>
         <PaymentCard>
-          <input id="debit_card" type="radio" {...register('paymentMethod')} />
+          <input
+            id="debit_card"
+            type="radio"
+            value="debit_card"
+            {...register('paymentMethod')}
+          />
           <label htmlFor="debit_card">
             <ContentContainer>
               <Bank size={16} />
@@ -41,7 +46,12 @@ export function PaymentMethod() {
           </label>
         </PaymentCard>
         <PaymentCard>
-          <input id="money" type="radio" {...register('paymentMethod')} />
+          <input
+            id="money"
+            type="radio"
+            value="money"
+            {...register('paymentMethod')}
+          />
           <label htmlFor="money">
             <ContentContainer>
               <Money size={16} />
