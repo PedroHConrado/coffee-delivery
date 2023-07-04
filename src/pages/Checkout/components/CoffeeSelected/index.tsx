@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom'
 import { formatMoney } from '../../../../utils/formatMoney'
-import { CoffeeCartCard } from '../../../Home/components/CoffeeCartCard'
 import {
   OrderInformation,
   OrderSumary,
@@ -11,6 +10,7 @@ import {
   ConfirmedButton,
 } from './styles'
 import { useCart } from '../../../../hooks/useCart'
+import { CoffeeCartCard } from '../CoffeeCartCard'
 
 export function CoffeeSelected() {
   const { cartItems, cartItemsTotal } = useCart()
