@@ -8,6 +8,7 @@ import { PaymentMethod } from './components/PaymentMethod'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../../hooks/useCart'
 import { EmptyBag } from './components/EmptyBag'
+import { transformName } from '../../utils/transformName'
 
 enum PaymentMethods {
   credit_card = 'credit_card',
@@ -17,12 +18,24 @@ enum PaymentMethods {
 
 const OrderFormValidationSchema = zod.object({
   cep: zod.string().min(1, 'Campo obrigatório'),
-  rua: zod.string().min(1, 'Campo obrigatório'),
-  numero: zod.number().min(1),
-  complemento: zod.string().min(1, 'Campo obrigatório'),
-  bairro: zod.string().min(1, 'Campo obrigatório'),
-  cidade: zod.string().min(1, 'Campo obrigatório'),
-  uf: zod.string().min(1, 'Campo obrigatório'),
+  rua: zod
+    .string()
+    .min(1, 'Campo obrigatório')
+    .transform((rua) => transformName(rua)),
+  numero: zod.string().min(1, 'Campo obrigatório'),
+  complemento: zod.string().min(1, 'Campo obrigatório').optional(),
+  bairro: zod
+    .string()
+    .min(1, 'Campo obrigatório')
+    .transform((bairro) => transformName(bairro)),
+  cidade: zod
+    .string()
+    .min(1, 'Campo obrigatório')
+    .transform((cidade) => transformName(cidade)),
+  uf: zod
+    .string()
+    .min(1, 'Campo obrigatório')
+    .transform((uf) => uf.toUpperCase()),
   paymentMethod: zod.nativeEnum(PaymentMethods, {
     errorMap: () => {
       return { message: 'Informe o método de pagamento' }
