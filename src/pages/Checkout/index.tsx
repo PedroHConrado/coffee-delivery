@@ -7,6 +7,7 @@ import * as zod from 'zod'
 import { PaymentMethod } from './components/PaymentMethod'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../../hooks/useCart'
+import { EmptyBag } from './components/EmptyBag'
 
 enum PaymentMethods {
   credit_card = 'credit_card',
@@ -29,9 +30,11 @@ const OrderFormValidationSchema = zod.object({
   }),
 })
 
-type OrderFormData = zod.infer<typeof OrderFormValidationSchema>
+export type OrderFormData = zod.infer<typeof OrderFormValidationSchema>
 
 export function Checkout() {
+  const { cartItems } = useCart()
+
   const confirmOrderForm = useForm<OrderFormData>({
     resolver: zodResolver(OrderFormValidationSchema),
   })
@@ -42,18 +45,25 @@ export function Checkout() {
   const { cleanCart } = useCart()
 
   function handleConfirmOrder(data: OrderFormData) {
-    console.log('chegou aqi')
+    navigate('/success', {
+      state: data,
+    })
+    cleanCart()
   }
 
   return (
     <FormProvider {...confirmOrderForm}>
-      <CheckoutContainer onSubmit={handleSubmit(handleConfirmOrder)}>
-        <OrderContainer>
-          <OrderForm />
-          <PaymentMethod />
-        </OrderContainer>
-        <CoffeeSelected />
-      </CheckoutContainer>
+      {cartItems.length >= 1 ? (
+        <CheckoutContainer onSubmit={handleSubmit(handleConfirmOrder)}>
+          <OrderContainer>
+            <OrderForm />
+            <PaymentMethod />
+          </OrderContainer>
+          <CoffeeSelected />
+        </CheckoutContainer>
+      ) : (
+        <EmptyBag />
+      )}
     </FormProvider>
   )
 }
