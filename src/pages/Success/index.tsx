@@ -3,8 +3,33 @@ import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 
 import Image from '../../assets/Illustration.svg'
 import { Clock, Item } from '../Home/components/StoreDetails/styles'
+import { OrderFormData } from '../Checkout'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+
+interface LocationType {
+  state: OrderFormData
+}
+
+const paymentMethodsModel = {
+  credit_card: 'Cartão de crédito',
+  debit_card: 'Cartão de débito',
+  money: 'Dinheiro',
+}
 
 export function Success() {
+  const { state } = useLocation() as LocationType
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!state) {
+      navigate('/')
+    }
+  }, [])
+
+  if (!state) return <></>
+
   return (
     <SuccessContainer>
       <DetailsOrder>
@@ -19,9 +44,14 @@ export function Success() {
             </Adress>
             <div>
               <span>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {state.rua}, {state.numero}
+                </strong>
               </span>
-              <span>Farrapos- Porto Alegre, RS</span>
+              <span>
+                {state.bairro} - {state.cidade}, {state.uf}
+              </span>
             </div>
           </Item>
           <Item>
@@ -39,7 +69,7 @@ export function Success() {
             </TypePayment>
             <div>
               <span>Pagamento na entrega</span>
-              <strong>Cartão de Crédito</strong>
+              <strong>{paymentMethodsModel[state.paymentMethod]}</strong>
             </div>
           </Item>
         </main>
