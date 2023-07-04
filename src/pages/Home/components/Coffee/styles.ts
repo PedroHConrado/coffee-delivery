@@ -124,4 +124,10 @@ export const CartButtonContainer = styled.button`
   color: ${(props) => props.theme.white};
 
   cursor: pointer;
+
+  &:hover {
+    scale: 1.1;
+    background: ${(props) => props.theme['purple-medium']};
+    transition: 0.5s;
+  }
 `

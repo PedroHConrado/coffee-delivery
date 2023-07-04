@@ -10,6 +10,7 @@ import {
 } from './styles'
 import { useCart } from '../../../../hooks/useCart'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 interface CoffeeProps {
   coffee: ICoffee
@@ -18,6 +19,18 @@ interface CoffeeProps {
 export function Coffee({ coffee }: CoffeeProps) {
   const { addCoffeeToCart } = useCart()
   const [amount, setAmount] = useState(1)
+  function notify() {
+    toast.success('Pedido adicionado!', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    })
+  }
 
   function handleIncrement() {
     setAmount((state) => state + 1)
@@ -31,8 +44,8 @@ export function Coffee({ coffee }: CoffeeProps) {
       ...coffee,
       amount,
     }
-
     addCoffeeToCart(coffeeToAdd)
+    notify()
   }
 
   return (
