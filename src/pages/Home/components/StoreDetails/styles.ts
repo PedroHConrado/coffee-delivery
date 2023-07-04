@@ -4,7 +4,8 @@ export const StoreDetailsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 34rem;
+  gap: 3.5rem;
+  height: 100%;
 
   div {
     display: flex;
@@ -14,6 +15,15 @@ export const StoreDetailsContainer = styled.div`
   img {
     width: 29.75rem;
     height: 22.5rem;
+  }
+
+  @media (max-width: 1168px) {
+    flex-direction: column;
+    font-size: 14px;
+
+    img {
+      order: -1;
+    }
   }
 `
 export const Description = styled.section`

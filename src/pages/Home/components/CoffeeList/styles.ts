@@ -1,10 +1,17 @@
 import styled from 'styled-components'
 
-export const CoffeeListContainer = styled.div``
+export const CoffeeListContainer = styled.div`
+  margin-top: 8.75rem;
+
+  @media (max-width: 1168px) {
+    text-align: center;
+  }
+`
 export const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  grid-gap: 2rem;
 `
 export const Title = styled.h2`
   font-size: 32px;
@@ -14,4 +21,8 @@ export const Title = styled.h2`
   color: ${(props) => props.theme['base-subtitle']};
 
   margin: 2rem 0 0.875rem 0;
+
+  @media (max-width: 1168px) {
+    text-align: center;
+  }
 `
