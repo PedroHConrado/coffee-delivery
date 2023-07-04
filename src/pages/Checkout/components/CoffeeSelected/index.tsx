@@ -8,6 +8,7 @@ import {
   ItensTotal,
   DeliveryPrice,
   TotalAmount,
+  ConfirmedButton,
 } from './styles'
 import { useCart } from '../../../../hooks/useCart'
 
@@ -38,7 +39,7 @@ export function CoffeeSelected() {
             <span>R$ {formatMoney(totalCoffee)}</span>
           </TotalAmount>
         </AmountTotal>
-        <button type="submit">CONFIMAR PEDIDO</button>
+        <ConfirmedButton type="submit">CONFIMAR PEDIDO</ConfirmedButton>
       </OrderSumary>
     </OrderInformation>
   )

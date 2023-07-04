@@ -94,3 +94,16 @@ export const TotalAmount = styled.div`
 
   color: ${(props) => props.theme['base-subtitle']};
 `
+export const ConfirmedButton = styled.button`
+  border: none;
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+
+  background: ${(props) => props.theme['yellow-medium']};
+
+  color: ${(props) => props.theme.white};
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22.4px;
+`
