@@ -19,9 +19,10 @@ interface CoffeeProps {
 export function Coffee({ coffee }: CoffeeProps) {
   const { addCoffeeToCart } = useCart()
   const [amount, setAmount] = useState(1)
+
   function notify() {
     toast.success('Pedido adicionado!', {
-      position: 'top-right',
+      position: 'bottom-left',
       autoClose: 1000,
       hideProgressBar: true,
       closeOnClick: true,
@@ -35,6 +36,7 @@ export function Coffee({ coffee }: CoffeeProps) {
   function handleIncrement() {
     setAmount((state) => state + 1)
   }
+
   function handleDecrement() {
     setAmount((state) => state - 1)
   }

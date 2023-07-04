@@ -9,11 +9,17 @@ import {
   InputCity,
   InputState,
   ClientInformation,
+  Input,
+  WarningError,
 } from './styles'
 import { useFormContext } from 'react-hook-form'
+import { OrderFormData } from '../..'
 
 export function OrderForm() {
-  const { register } = useFormContext()
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<OrderFormData>()
 
   return (
     <ClientInformation>
@@ -29,17 +35,42 @@ export function OrderForm() {
           </div>
         </header>
         <main>
-          <InputCep placeholder="CEP" {...register('cep')} />
-          <InputStreet placeholder="Rua" {...register('rua')} />
-          <InputNumber
-            type="number"
-            placeholder="Número"
-            {...register('numero', { valueAsNumber: true })}
-          />
-          <InputAdjuct placeholder="Complemento" {...register('complemento')} />
-          <InputNeighborhood placeholder="Bairro" {...register('bairro')} />
-          <InputCity placeholder="Cidade" {...register('cidade')} />
-          <InputState placeholder="UF" {...register('uf')} />
+          <InputCep>
+            <Input placeholder="CEP" {...register('cep')} />
+            {errors.cep && <WarningError>{errors.cep?.message}</WarningError>}
+          </InputCep>
+          <InputStreet>
+            <Input placeholder="Rua" {...register('rua')} />
+            {errors.rua && <WarningError>{errors.rua?.message}</WarningError>}
+          </InputStreet>
+          <InputNumber>
+            <Input type="number" placeholder="Número" {...register('numero')} />
+            {errors.numero && (
+              <WarningError>{errors.numero?.message}</WarningError>
+            )}
+          </InputNumber>
+          <InputAdjuct>
+            <Input placeholder="Complemento" {...register('complemento')} />
+            {errors.complemento && (
+              <WarningError>{errors.complemento?.message}</WarningError>
+            )}
+          </InputAdjuct>
+          <InputNeighborhood>
+            <Input placeholder="Bairro" {...register('bairro')} />
+            {errors.bairro && (
+              <WarningError>{errors.bairro?.message}</WarningError>
+            )}
+          </InputNeighborhood>
+          <InputCity>
+            <Input placeholder="Cidade" {...register('cidade')} />
+            {errors.cidade && (
+              <WarningError>{errors.cidade?.message}</WarningError>
+            )}
+          </InputCity>
+          <InputState>
+            <Input placeholder="UF" {...register('uf')} />
+            {errors.uf && <WarningError>{errors.uf?.message}</WarningError>}
+          </InputState>
         </main>
       </AddressInfo>
     </ClientInformation>

@@ -31,6 +31,7 @@ export const AddressInfo = styled.div`
 
   main {
     width: 35rem;
+    height: auto;
     display: grid;
     grid-template-columns: 12.5rem 17.25rem 3.75rem;
     gap: 1rem;
@@ -43,7 +44,7 @@ export const ClientInformation = styled.div`
 `
 export const Input = styled.input`
   height: 2.625rem;
-
+  width: 100%;
   background: ${(props) => props.theme['base-input']};
   color: ${(props) => props.theme['base-label']};
   padding: 12px;
@@ -51,39 +52,48 @@ export const Input = styled.input`
   border: none;
   border: 1px solid ${(props) => props.theme['base-button']};
   border-radius: 4px;
+
+  &:focus {
+    outline: 1px solid ${(props) => props.theme['yellow-dark']};
+  }
 `
-export const InputCep = styled(Input)`
+export const InputCep = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
 `
-export const InputStreet = styled(Input)`
+export const InputStreet = styled.div`
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 2;
 `
-export const InputNumber = styled(Input)`
+export const InputNumber = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 3;
 `
-export const InputAdjuct = styled(Input)`
+export const InputAdjuct = styled.div`
   grid-column-start: 2;
   grid-column-end: 4;
   grid-row-start: 3;
 `
-export const InputNeighborhood = styled(Input)`
+export const InputNeighborhood = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 4;
 `
-export const InputCity = styled(Input)`
+export const InputCity = styled.div`
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 4;
 `
-export const InputState = styled(Input)`
+export const InputState = styled.div`
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 4;
+`
+export const WarningError = styled.p`
+  color: red;
+  font-size: 10px;
+  padding-top: 0.5rem;
 `
