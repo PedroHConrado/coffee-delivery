@@ -30,11 +30,11 @@ export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
         {coffee.name}
         <section>
           <Amount>
-            <button onClick={handleDecrement}>
+            <button type="button" onClick={handleDecrement}>
               <Minus size={14} />
             </button>
             <span>{coffee.amount}</span>
-            <button onClick={handleIncrement}>
+            <button type="button" onClick={handleIncrement}>
               <Plus size={14} />
             </button>
           </Amount>
