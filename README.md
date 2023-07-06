@@ -12,25 +12,23 @@ This applications is a coffee marketplace.
 ## Screenshots
 
 <div align="center" id="top"> 
-![image](https://github.com/PedroHConrado/coffee-delivery/assets/69021966/61a17cae-9c2a-482e-aa89-e0552735df0a)
+<img src="./src/assets/Print-Home.png" alt="Página Home" />
 </div>
 <br/>
 <br/>
 <div align="center" id="top"> 
-  ![image](https://github.com/PedroHConrado/coffee-delivery/assets/69021966/ce2ec2cb-0e11-43e0-b8d8-268c5b21f05d)
+  <img src="./src/assets/Print-Checkout.png" alt="Página Checkout" />
 </div>
 <br/>
 <br/>
 <div align="center" id="top"> 
-  ![image](https://github.com/PedroHConrado/coffee-delivery/assets/69021966/b55239f9-de40-40ab-bc14-8fdc31077d71)
+  <img src="./src/assets/Print-Success.png" alt="Página Success" />
 
 </div>
 
 ## Features
 
-- Table with personal finance data with name, amount, category and date.
-- Summary cards with incomes, outcomes and total.
-- Button that Create a new transaction using a beautiful modal.
+It's a coffee ordering app! The application has 3 screens, the first is a presentation screen and a list of available coffees. On the second screen, there is a form with your address data and the cart with the selected coffees. In the third, an order confirmation is displayed, as well as the delivery details of the purchase.
 
 ## Technologies
 
@@ -38,7 +36,7 @@ The following tools were used in this project:
 
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [immer](https://immerjs.github.io/immer/)
+- [Immer](https://immerjs.github.io/immer/)
 - [Zod](https://zod.dev/)
 - [Axios](https://github.com/axios/axios)
 - [Styled Componensts](https://styled-components.com/)
