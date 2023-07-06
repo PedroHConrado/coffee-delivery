@@ -12,12 +12,18 @@ This applications is a coffee marketplace.
 ## Screenshots
 
 <div align="center" id="top"> 
-![Alt text](image.png)
+![image](https://github.com/PedroHConrado/coffee-delivery/assets/69021966/61a17cae-9c2a-482e-aa89-e0552735df0a)
 </div>
 <br/>
 <br/>
 <div align="center" id="top"> 
-  <img src="./src/assets/screen1.png" alt="01 Dtmoney" />
+  ![image](https://github.com/PedroHConrado/coffee-delivery/assets/69021966/ce2ec2cb-0e11-43e0-b8d8-268c5b21f05d)
+</div>
+<br/>
+<br/>
+<div align="center" id="top"> 
+  ![image](https://github.com/PedroHConrado/coffee-delivery/assets/69021966/b55239f9-de40-40ab-bc14-8fdc31077d71)
+
 </div>
 
 ## Features
